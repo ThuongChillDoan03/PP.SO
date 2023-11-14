@@ -79,12 +79,16 @@ def noi_suy_lagrange(x, y):
     n = x.shape[0]
     P = np.zeros(n)
     omega = hoocne_product(x)
+    DI = []
     for i in range(n):
         Di = D_i(x, i)
+        DI.append(Di)
         a = hoocne_quatient(omega, x[i])[0]
         Li = (1/Di)*a
         P += y[i]*Li
+    print("Tích phần tử (D_i): ", DI)
     return P
+
 
 def ve_do_thi_da_thuc(x, y):
     a = np.ndarray.min(x)
@@ -122,7 +126,7 @@ def bieu_dien_da_thuc(P):
     da_thuc += str(round(P[-1], 5))
     return da_thuc
 
-x, y = doc_input ("Test_data_Largrange.xlsx")
+x, y = doc_input ("Data_20221_GK.xlsx")
 if(kiem_tra_input(x, y)):
     P = noi_suy_lagrange(x, y)
     print("Da thuc noi suy theo x: ", bieu_dien_da_thuc(P))
@@ -137,3 +141,5 @@ if(kiem_tra_input(x, y)):
     else:
         print("gia tri can tinh nam ngoai khoang noi suy")
         
+
+     
